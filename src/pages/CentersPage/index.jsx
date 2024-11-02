@@ -1,10 +1,11 @@
 import './style.css';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { Outlet } from 'react-router-dom';
 
 export const CentersPage = () => {
 
-  let [centers, setCenters] = useState([]);
+  const [centers, setCenters] = useState([]);
 
   useEffect(() => {
     const fetchCenters = async () => {
@@ -27,9 +28,10 @@ export const CentersPage = () => {
       <main>
       <ul>
         {centers.map(center => (
-          <li key={center.id}>/pobocky/{center.id} {center.name}</li>
+          <li key={center.id}><a href={`pobocky/${center.id}`}>{center.name}</a><p> {center.address}</p></li>
         ))}
       </ul>
+      <Outlet/>
       </main>      
     </div>
   );
