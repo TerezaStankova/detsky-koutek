@@ -1,14 +1,35 @@
 import './style.css';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 export const CentersPage = () => {
+
+  let [centers, setCenters] = useState([]);
+
+  useEffect(() => {
+    const fetchCenters = async () => {
+      const response = await fetch('http://localhost:4000/api/centers');
+      const data = await response.json();
+      console.log(data.data[0]);
+
+      const centersData = data.data.map(({ id, name, address, capacity, open, info }) => ({ id, name, address, capacity, open, info }));
+      setCenters(centers.concat(centersData));
+    };
+    fetchCenters();
+    console.log(centers);
+  }, []);
+
   return (
     <div className="container">
       <header>
-        <h1>O nás</h1>
+        <h1>Pobočky</h1>
       </header>
       <main>
-        <p>
-Jsme tým mladých nadšenců do vzdělávání a zábavy pro děti. Naše poslání je vytvářet podnětné a zábavné aktivity pro děti, které podporují jejich rozvoj a učení nových dovedností. Vytvořili jsme dětský koutek jako místo, kde se děti cítí v bezpečí, mohou objevovat a zároveň se něco nového naučit. Doufáme, že se k nám vydáte a budete s námi sdílet své zážitky a nápady na další aktivity!</p>
+      <ul>
+        {centers.map(center => (
+          <li key={center.id}>/pobocky/{center.id} {center.name}</li>
+        ))}
+      </ul>
       </main>      
     </div>
   );

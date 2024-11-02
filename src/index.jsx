@@ -1,13 +1,17 @@
 import { createRoot } from 'react-dom/client';
+import React from 'react';
+import { createBrowserRouter, RouterProvider, Link } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+
 import { HomePage } from './pages/HomePage';
 import { ErrorPage } from './pages/ErrorPage';
 import { About } from './pages/About';
 import { Contact } from './pages/Contact';
+import { CentersPage } from './pages/CentersPage';
 import './global.css';
 
-import React from 'react';
-import { createBrowserRouter, RouterProvider, Link } from 'react-router-dom';
-import { Outlet } from 'react-router-dom';
+
+
 
 const App = () => {
   return (
@@ -19,6 +23,8 @@ const App = () => {
       <Link to="/about">O nás</Link>
       <span> | </span>
       <Link to="/contact">Kontakt</Link>
+      <span> | </span>
+      <Link to="/centers">Centra</Link>
       </nav>
       <Outlet/>
       <footer>
@@ -46,6 +52,11 @@ const router = createBrowserRouter([
         path: 'contact',
         element: <Contact/>,
       },
+      ,
+      {
+        path: 'centers',
+        element: <CentersPage/>,
+      }
     ],
   },
 ]);
