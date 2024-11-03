@@ -1,7 +1,7 @@
 import './style.css';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 
 export const CentersPage = () => {
 
@@ -28,8 +28,8 @@ export const CentersPage = () => {
       <main>
       <ul>
         {centers.map(center => (
-          <li key={center.id}><a href={`pobocky/${center.id}`}>{center.name}</a><p> {center.address}</p></li>
-        ))}
+          <li key={center.id}><Link to={`pobocky/${center.id}`}>{center.name}</Link><p> {center.address}</p></li>
+                  ))}
       </ul>
       <Outlet/>
       </main>      

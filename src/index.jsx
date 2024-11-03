@@ -8,6 +8,7 @@ import { ErrorPage } from './pages/ErrorPage';
 import { About } from './pages/About';
 import { Contact } from './pages/Contact';
 import { CentersPage } from './pages/CentersPage';
+import { CenterDetail } from './components/CenterDetail';
 import './global.css';
 
 
@@ -24,7 +25,7 @@ const App = () => {
       <span> | </span>
       <Link to="/contact">Kontakt</Link>
       <span> | </span>
-      <Link to="/centers">Centra</Link>
+      <Link to="/pobocky">Centra</Link>
       </nav>
       <Outlet/>
       <footer>
@@ -52,11 +53,16 @@ const router = createBrowserRouter([
         path: 'contact',
         element: <Contact/>,
       },
-      ,
       {
-        path: 'centers',
+        path: 'pobocky',
         element: <CentersPage/>,
-      }
+        children: [
+            {
+                path: 'pobocky/:id',
+                element: <CenterDetail/>
+            }
+        ]
+    }
     ],
   },
 ]);
