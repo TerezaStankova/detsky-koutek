@@ -30,7 +30,7 @@ export const CentersPage = () => {
       
         {centers.map(center => (
           <div key={center.id} className="grid-item">           
-              <NavLink to={`pobocky/${center.id}`} className={({isActive}) => (isActive ? "selected" : 'unselected')}>{center.name}</NavLink>
+              <NavLink to={`${center.id}`} className={({isActive}) => (isActive ? "selected" : 'unselected')}>{center.name}</NavLink>
               <p> {center.address}</p>            
           </div>
             ))
