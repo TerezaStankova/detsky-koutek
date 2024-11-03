@@ -5,17 +5,15 @@ import { Outlet, useParams } from 'react-router-dom';
 
 export const CenterDetail = () => {
 
-  const [center, setCenter] = useState({adress: "aa", name: "", open: {}});
+  const [center, setCenter] = useState({adress: "Adresa", name: "", open: {}});
   const { id } = useParams();
+
+  const dayToCzMap = {mon: "Pondělí", tue: "Úterý",wed: "Středa",thu: "Čtvrtek",fri: "Pátek",sat: "Sobota",sun: "Neděle",}
 
   useEffect(() => {
     const fetchCenter = async () => {
       const response = await fetch(`http://localhost:4000/api/centers/${id}`);
       const centerData = await response.json();
-      console.log(centerData);
-      console.log(centerData.data.name);
-      console.log(id);
-      //const centersData = data.data.map(({ id, name, address, capacity, open, info }) => ({ id, name, address, capacity, open, info }));
       setCenter(((prevState) => ({
         ...prevState,
         name: centerData.data.name,
@@ -26,9 +24,6 @@ export const CenterDetail = () => {
       console.log(centerData);
     };
     fetchCenter();
-    //console.log(center);
-    console.log(id);
-    console.log(center);
   }, [id]);
 
   return (
@@ -39,13 +34,9 @@ export const CenterDetail = () => {
       { <main>        
       <p>{center.address}</p>   
       <p>{center.info}</p> 
+      <h3>Otevírací doba:</h3> 
+      {Object.entries(center.open).map(([key, value]) => <li key={key}>{dayToCzMap[key]}: {value == null ? 'Zavřeno' : value}</li> )}
       </main>    }  
     </div>
   );
 };
-
-{/* <ul>
-{center.open.map(day => (
-  <li key={day}></li>
-          ))}
-</ul> */}
