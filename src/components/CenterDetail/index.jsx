@@ -1,7 +1,5 @@
-import './style.css';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { Outlet, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 export const CenterDetail = () => {
 
@@ -35,7 +33,9 @@ export const CenterDetail = () => {
       <p>{center.address}</p>   
       <p>{center.info}</p> 
       <h3>Otevírací doba:</h3> 
+      <ul>
       {Object.entries(center.open).map(([key, value]) => <li key={key}>{dayToCzMap[key]}: {value == null ? 'Zavřeno' : value}</li> )}
+      </ul>
       </main>    }  
     </div>
   );
