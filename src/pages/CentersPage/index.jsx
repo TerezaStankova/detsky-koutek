@@ -1,7 +1,7 @@
 import './style.css';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet, NavLink } from 'react-router-dom';
 
 export const CentersPage = () => {
 
@@ -25,14 +25,19 @@ export const CentersPage = () => {
       <header>
         <h1>Pobočky</h1>
       </header>
-      <main>
-      <ul>
+      <main className="centers-grid">
+      
+      
         {centers.map(center => (
-          <li key={center.id}><Link to={`pobocky/${center.id}`}>{center.name}</Link><p> {center.address}</p></li>
-                  ))}
-      </ul>
-      <Outlet/>
-      </main>      
+          <div key={center.id} className="grid-item">           
+              <NavLink to={`pobocky/${center.id}`} className={({isActive}) => (isActive ? "selected" : 'unselected')}>{center.name}</NavLink>
+              <p> {center.address}</p>            
+          </div>
+            ))
+            }
+         
+      </main>    
+      <Outlet/>  
     </div>
   );
 };

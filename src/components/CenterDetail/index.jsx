@@ -34,7 +34,7 @@ export const CenterDetail = () => {
   return (
     <div className="container">
       <header>
-        <h2>Pobočka {center.name}</h2>
+        <h2>{center.name}</h2>
       </header>
       { <main>        
       <p>{center.address}</p>   

@@ -11,3 +11,27 @@ header {
   background-image: url(./img/rocket.svg);
   background-size: contain;
 }
+
+.selected {
+  font-weight: bold;
+  color: goldenrod;
+}
+
+.unselected {
+  font-weight: lighter;
+  color: goldenrod;
+}
+
+.centers-grid{
+  display: inline-grid;
+  grid-template-columns: auto auto auto;  
+  padding: 5px;
+  column-gap: 5px;
+}
+
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 0px solid rgba(0, 0, 0, 0.8);
+  padding: 2px;
+  text-align: center;
+}
